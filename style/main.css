@@ -21,3 +21,11 @@ a:visited {
 }
 
 /* 색상 변수 */
+/* header  */
+.banner-top {
+  background-color: #f5e44f;
+  width: 100%;
+  padding: 11px;
+  text-align: center;
+  font-size: 12px;
+}/*# sourceMappingURL=main.css.map */

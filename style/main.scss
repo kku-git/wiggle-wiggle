@@ -4,4 +4,11 @@
 $main_color: #f5e44f;
 $sub_color: #e33258;
 
-/* header */
+/* header  */
+.banner-top {
+  background-color: $main_color;
+  width: 100%;
+  padding: 11px;
+  text-align: center;
+  font-size: 12px;
+}
