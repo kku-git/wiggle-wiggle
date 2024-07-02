@@ -3,8 +3,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  position: relative;
-  pointer-events: none;
+  // position: relative;
+  // pointer-events: none;
   text-decoration: none;
   list-style: none;
 }
@@ -17,4 +17,10 @@ a,
 a:link,
 a:visited {
   color: inherit; //하단 밑줄 색깔 없애기
+}
+
+img {
+  display: block;
+  // max-width: 100%; /* 이미지가 부모 요소를 넘지 않도록 */
+  // height: auto; /* 이미지의 비율을 유지 */
 }

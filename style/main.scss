@@ -6,9 +6,222 @@ $sub_color: #e33258;
 
 /* header  */
 .banner-top {
+  letter-spacing: 1px;
   background-color: $main_color;
   width: 100%;
   padding: 11px;
   text-align: center;
   font-size: 12px;
+  display: block; // 나중에 자바스크립트로 건들것
+  position: relative;
+  z-index: 3;
+  a:hover {
+    font-weight: bold;
+    color: $sub_color;
+  }
+  .close {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    &:hover {
+      font-weight: bold;
+      color: $sub_color;
+    }
+  }
+}
+
+.banner-header {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  padding: 27px;
+  z-index: 333;
+  .hamburger_menu {
+    cursor: pointer;
+    width: 80px;
+    &:hover span {
+      transform: scaleY(1.2);
+      background-color: $sub_color;
+    }
+
+    // span 태그에 스타일 적용
+    span {
+      display: block;
+      height: 10px;
+      background-color: $main_color;
+      margin: 20px 0;
+      transition: all 0.3s ease-out;
+      border-radius: 10px;
+      &:first-child {
+        margin-top: 0;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  a {
+    img {
+      width: 175px;
+      height: 84px;
+    }
+  }
+}
+
+// aside
+#aside {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 488px;
+  height: 100vh;
+  background: $main_color;
+  z-index: 999;
+  overflow-y: auto; // 질문 정리하기
+  display: none; // js로 건들기
+  padding: 78px 54px;
+  font-size: 18px;
+  li {
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: $sub_color;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &:hover {
+      font-weight: bold;
+      color: white; // 밑줄 생기게 꾸며주기
+    }
+  }
+
+  .aside-top {
+    margin: auto; //가운데 정렬
+    width: 100%;
+    margin-bottom: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .aside-search {
+      legend {
+        display: none;
+      }
+
+      fieldset {
+        border: none; /* 기본 fieldset 테두리 제거 */
+        padding: 0; /* 기본 패딩 제거 */
+        margin: 0; /* 기본 마진 제거 */
+      }
+
+      .input-container {
+        position: relative;
+        width: 100%;
+        .search-icon {
+          position: absolute;
+          right: 10px; /* 필요한 경우 조정 */
+          top: 50%;
+          transform: translateY(-50%);
+          width: 20px; /* 필요한 경우 조정 */
+          height: 20px; /* 필요한 경우 조정 */
+        }
+      }
+
+      input {
+        padding: 10px;
+        background-color: $main_color;
+        width: 260px;
+        height: 38px;
+        border: 5px solid $sub_color;
+        border-style: dashed;
+        border-radius: 50px;
+        letter-spacing: 2px;
+        color: $sub_color;
+        font-weight: bold;
+        outline: none; /* 포커스 시 기본 테두리 제거 */
+        box-shadow: none; /* 포커스 시 그림자 제거 */
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill:active {
+          -webkit-box-shadow: 0 0 0 30px $main_color inset;
+          -webkit-text-fill-color: $sub_color;
+          border: 5px dashed $sub_color;
+        }
+        // input 요소의 자동완성 스타일을 덮어쓰는 CSS - 질문
+      }
+    }
+    .aside-cart {
+      display: flex;
+      align-items: center;
+      margin-left: 21px; // 간격 추가
+    }
+    .aside-close {
+      margin-left: 21px; // 간격 추가
+      img {
+        width: 39px;
+        height: 39px;
+      }
+    }
+  }
+
+  .dote-line {
+    width: 100%; //.aside-content 너비 만큼 라인 채워주기.
+    //.dote-line이 부모 요소인 .aside-content의 너비를 가득 채우도록 했음.
+    height: 5px;
+    display: inline-block; //span태그는 inline.
+    margin: 27.5px 0; /* 총 높이를 59px로 맞추기 위해 조정 */
+    border-bottom: 5px dashed $sub_color;
+  }
+}
+
+.container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  img {
+    width: 100%;
+  }
+}
+
+// pop-up 슬라이드 팝업창
+.slide-pop {
+  background-color: $main_color;
+  white-space: nowrap; /* 자식 요소들이 한 줄로 나열되도록 설정 */
+  .marquee-container {
+    transition: 0.3s;
+    font-size: 1.2rem;
+    display: inline-block;
+    overflow: hidden;
+    animation: marquee 30s linear infinite;
+    &:hover {
+      animation-play-state: paused;
+      color: $sub_color;
+    }
+    .marquee {
+      padding: 0 3rem; // 글자 사이 간격 조정
+    }
+  }
+}
+@keyframes marquee {
+  0% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translateX(-100%); /* 시작 위치를 오른쪽 끝으로 설정 */
+  }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translateX(100%); /* 끝 위치를 왼쪽 끝으로 설정 */
+  }
+}
+
+// swiper
+.category-wrapper {
+  display: flex;
+}
+.swiper-wrapper {
+  display: flex;
 }

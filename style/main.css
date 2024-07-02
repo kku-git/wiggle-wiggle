@@ -4,8 +4,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  position: relative;
-  pointer-events: none;
   text-decoration: none;
   list-style: none;
 }
@@ -20,12 +18,207 @@ a:visited {
   color: inherit;
 }
 
+img {
+  display: block;
+}
+
 /* 색상 변수 */
 /* header  */
 .banner-top {
+  letter-spacing: 1px;
   background-color: #f5e44f;
   width: 100%;
   padding: 11px;
   text-align: center;
   font-size: 12px;
+  display: block;
+  position: relative;
+  z-index: 3;
+}
+.banner-top a:hover {
+  font-weight: bold;
+  color: #e33258;
+}
+.banner-top .close {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.banner-top .close:hover {
+  font-weight: bold;
+  color: #e33258;
+}
+
+.banner-header {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  padding: 27px;
+  z-index: 333;
+}
+.banner-header .hamburger_menu {
+  cursor: pointer;
+  width: 80px;
+}
+.banner-header .hamburger_menu:hover span {
+  transform: scaleY(1.2);
+  background-color: #e33258;
+}
+.banner-header .hamburger_menu span {
+  display: block;
+  height: 10px;
+  background-color: #f5e44f;
+  margin: 20px 0;
+  transition: all 0.3s ease-out;
+  border-radius: 10px;
+}
+.banner-header .hamburger_menu span:first-child {
+  margin-top: 0;
+}
+.banner-header .hamburger_menu span:last-child {
+  margin-bottom: 0;
+}
+.banner-header a img {
+  width: 175px;
+  height: 84px;
+}
+
+#aside {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 488px;
+  height: 100vh;
+  background: #f5e44f;
+  z-index: 999;
+  overflow-y: auto;
+  display: none;
+  padding: 78px 54px;
+  font-size: 18px;
+}
+#aside li {
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #e33258;
+}
+#aside li:last-child {
+  margin-bottom: 0;
+}
+#aside li:hover {
+  font-weight: bold;
+  color: white;
+}
+#aside .aside-top {
+  margin: auto;
+  width: 100%;
+  margin-bottom: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#aside .aside-top .aside-search legend {
+  display: none;
+}
+#aside .aside-top .aside-search fieldset {
+  border: none; /* 기본 fieldset 테두리 제거 */
+  padding: 0; /* 기본 패딩 제거 */
+  margin: 0; /* 기본 마진 제거 */
+}
+#aside .aside-top .aside-search .input-container {
+  position: relative;
+  width: 100%;
+}
+#aside .aside-top .aside-search .input-container .search-icon {
+  position: absolute;
+  right: 10px; /* 필요한 경우 조정 */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px; /* 필요한 경우 조정 */
+  height: 20px; /* 필요한 경우 조정 */
+}
+#aside .aside-top .aside-search input {
+  padding: 10px;
+  background-color: #f5e44f;
+  width: 260px;
+  height: 38px;
+  border: 5px solid #e33258;
+  border-style: dashed;
+  border-radius: 50px;
+  letter-spacing: 2px;
+  color: #e33258;
+  font-weight: bold;
+  outline: none; /* 포커스 시 기본 테두리 제거 */
+  box-shadow: none; /* 포커스 시 그림자 제거 */
+}
+#aside .aside-top .aside-search input:-webkit-autofill, #aside .aside-top .aside-search input:-webkit-autofill:hover, #aside .aside-top .aside-search input:-webkit-autofill:focus, #aside .aside-top .aside-search input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #f5e44f inset;
+  -webkit-text-fill-color: #e33258;
+  border: 5px dashed #e33258;
+}
+#aside .aside-top .aside-cart {
+  display: flex;
+  align-items: center;
+  margin-left: 21px;
+}
+#aside .aside-top .aside-close {
+  margin-left: 21px;
+}
+#aside .aside-top .aside-close img {
+  width: 39px;
+  height: 39px;
+}
+#aside .dote-line {
+  width: 100%;
+  height: 5px;
+  display: inline-block;
+  margin: 27.5px 0; /* 총 높이를 59px로 맞추기 위해 조정 */
+  border-bottom: 5px dashed #e33258;
+}
+
+.container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.container img {
+  width: 100%;
+}
+
+.slide-pop {
+  background-color: #f5e44f;
+  white-space: nowrap; /* 자식 요소들이 한 줄로 나열되도록 설정 */
+}
+.slide-pop .marquee-container {
+  transition: 0.3s;
+  font-size: 1.2rem;
+  display: inline-block;
+  overflow: hidden;
+  animation: marquee 30s linear infinite;
+}
+.slide-pop .marquee-container:hover {
+  animation-play-state: paused;
+  color: #e33258;
+}
+.slide-pop .marquee-container .marquee {
+  padding: 0 3rem;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(-100%); /* 시작 위치를 오른쪽 끝으로 설정 */
+  }
+  100% {
+    transform: translateX(100%); /* 끝 위치를 왼쪽 끝으로 설정 */
+  }
+}
+.category-wrapper {
+  display: flex;
+}
+
+.swiper-wrapper {
+  display: flex;
 }/*# sourceMappingURL=main.css.map */
