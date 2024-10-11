@@ -1,0 +1,22 @@
+/* CSS - 기본 설정 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+html {
+  font-size: 16px;
+}
+
+a,
+a:link,
+a:visited {
+  color: inherit;
+}
+
+img {
+  display: block;
+}

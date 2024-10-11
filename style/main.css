@@ -1,0 +1,357 @@
+@charset "UTF-8";
+/* CSS - 기본 설정 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+html {
+  font-size: 16px;
+}
+
+a,
+a:link,
+a:visited {
+  color: inherit;
+}
+
+img {
+  display: block;
+}
+
+@font-face {
+  font-family: "MinSans-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+/* 색상 변수 */
+body {
+  font-family: "MinSans-Regular";
+  position: relative;
+  display: block;
+  min-height: 100vh;
+  background-color: #f5e44f;
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+
+.header {
+  position: relative;
+  width: 100%;
+}
+
+.banner-top {
+  letter-spacing: 1px;
+  background-color: #f5e44f;
+  width: 100%;
+  padding: 0.5vw;
+  text-align: center;
+  font-size: 1vw;
+}
+.banner-top a:hover {
+  font-weight: bold;
+  color: #e33258;
+}
+.banner-top .close {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.banner-top .close:hover {
+  font-weight: bold;
+  color: #e33258;
+}
+
+.banner-header {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 27px;
+  z-index: 333;
+  align-items: center;
+}
+.banner-header a img {
+  width: 17.5vw;
+  height: 8.4vw;
+}
+.banner-header .hamburger_menu {
+  cursor: pointer;
+}
+.banner-header .hamburger_menu a img {
+  width: 8.8vw;
+  height: 5.9vw;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+}
+.container img {
+  width: 100%;
+  height: 100%;
+}
+
+.slide-pop {
+  background-color: #f5e44f;
+  white-space: nowrap;
+}
+.slide-pop:hover {
+  color: #e33258;
+  cursor: pointer;
+}
+.slide-pop .marquee-container {
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
+  font-size: 1.6vw;
+  overflow: hidden;
+  height: 100%;
+}
+.slide-pop .marquee-container .marquee {
+  animation: marquee 10s linear infinite;
+  padding: 0 3rem;
+}
+
+.slide-pop:hover .marquee-container .marquee {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+.slider {
+  background-color: #f5e44f;
+  overflow: hidden;
+  height: 20vw;
+  margin: auto;
+}
+.slider .list {
+  display: flex;
+  width: 300vw;
+  animation: scroll 40s linear infinite;
+}
+.slider .item {
+  cursor: pointer;
+  height: 20vw;
+  width: 20vw;
+  perspective: 100px;
+}
+.slider .item img {
+  width: 100%;
+  transition: transform 1s;
+}
+
+.slider:hover .list {
+  animation-play-state: paused;
+}
+
+.slider:hover .item {
+  filter: grayscale(1);
+}
+
+.slider .item:hover {
+  filter: grayscale(0);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translateX(-200vw);
+  }
+}
+.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(255, 210, 217);
+}
+
+.footer_top {
+  justify-content: space-between;
+  background-color: #e33258;
+  display: flex;
+  padding: 1vw;
+}
+.footer_top p {
+  color: #f5e44f;
+  font-weight: bolder;
+}
+.footer_top img {
+  height: 2.15vw;
+}
+
+.footer_bottom {
+  padding: 2vw 2vw;
+  display: none;
+  background-color: #e33258;
+  border-top: 1px solid #f5e44f;
+}
+.footer_bottom span {
+  color: #f5e44f;
+}
+.footer_bottom span::after {
+  content: "";
+  border-left: 0.15vw solid #f5e44f;
+  height: 1.1vw;
+  display: inline-block;
+  margin-left: 5px;
+  margin: 0 5px;
+}
+.footer_bottom .footer_info {
+  font-size: 1.3vw;
+}
+
+.category-wrapper .category-container {
+  display: flex;
+  justify-content: space-around;
+}
+.category-wrapper .category-container .category-img {
+  position: relative;
+}
+.category-wrapper .category-container .category-img .overlay-wrap {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer;
+}
+.category-wrapper .category-container .category-img .overlay-wrap:hover .overlay {
+  margin-top: 50%;
+}
+.category-wrapper .category-container .category-img .overlay-wrap .overlay {
+  width: 100%;
+  height: 100%;
+  margin-top: 100%;
+  transition: all 1s;
+  display: flex;
+  justify-content: center;
+}
+.category-wrapper .category-container .category-img .overlay-wrap .overlay span {
+  font-size: 2vw;
+  font-weight: bold;
+  color: #e33258;
+  text-shadow: -1px -1px 0 #f5e44f, 1px -1px 0 #f5e44f, -1px 1px 0 #f5e44f, 1px 1px 0 #f5e44f;
+}
+
+.slide-box {
+  width: 100vw;
+  display: flex;
+  flex-shrink: 0;
+}
+.slide-box .slide-box img {
+  width: 100%;
+}
+
+.slide-wrapper {
+  display: flex;
+  width: 400vw;
+  transition: transform 1s;
+}
+
+.slide-container {
+  overflow: hidden;
+}
+
+#aside {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 488px;
+  height: 100vh;
+  background: #f5e44f;
+  z-index: 999;
+  overflow-y: hidden;
+  display: none;
+  padding: 78px 54px;
+  font-size: 18px;
+}
+#aside li {
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #e33258;
+}
+#aside li:last-child {
+  margin-bottom: 0;
+}
+#aside li:hover {
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+}
+#aside .aside-top {
+  margin: auto;
+  width: 100%;
+  margin-bottom: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#aside .aside-top .aside-search legend {
+  display: none;
+}
+#aside .aside-top .aside-search fieldset {
+  border: none;
+}
+#aside .aside-top .aside-search .input-container {
+  position: relative;
+  width: 100%;
+}
+#aside .aside-top .aside-search .input-container .search-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+}
+#aside .aside-top .aside-search input {
+  padding: 10px;
+  background-color: #f5e44f;
+  width: 260px;
+  height: 38px;
+  border: 5px solid #e33258;
+  border-style: dashed;
+  border-radius: 50px;
+  letter-spacing: 2px;
+  color: #e33258;
+  font-weight: bold;
+  outline: none;
+  box-shadow: none;
+}
+#aside .aside-top .aside-cart {
+  display: flex;
+  align-items: center;
+  margin-left: 21px;
+}
+#aside .aside-top .aside-close {
+  margin-left: 21px;
+}
+#aside .aside-top .aside-close img {
+  width: 39px;
+  height: 39px;
+}
+#aside .dote-line {
+  width: 100%;
+  height: 5px;
+  display: inline-block;
+  margin: 27.5px 0;
+  border-bottom: 5px dashed #e33258;
+}/*# sourceMappingURL=main.css.map */

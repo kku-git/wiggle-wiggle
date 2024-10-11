@@ -1,0 +1,352 @@
+@use "reset";
+@font-face {
+  font-family: "MinSans-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/MinSans-Regular.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 색상 변수 */
+$main_color: #f5e44f;
+$sub_color: #e33258;
+
+body {
+  font-family: "MinSans-Regular";
+  position: relative;
+  display: block;
+  min-height: 100vh;
+  background-color: $main_color;
+}
+.wrapper {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+//  헤더
+.header {
+  position: relative;
+  width: 100%;
+}
+// 전광판
+.banner-top {
+  letter-spacing: 1px;
+  background-color: $main_color;
+  width: 100%;
+  padding: 0.5vw;
+  text-align: center;
+  font-size: 1vw;
+  a:hover {
+    font-weight: bold;
+    color: $sub_color;
+  }
+  .close {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    &:hover {
+      font-weight: bold;
+      color: $sub_color;
+    }
+  }
+}
+
+.banner-header {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 27px;
+  z-index: 333;
+  align-items: center;
+  a img {
+    width: 17.5vw;
+    height: 8.4vw;
+  }
+  .hamburger_menu {
+    cursor: pointer;
+    a {
+      img {
+        width: 8.8vw;
+        height: 5.9vw;
+      }
+    }
+  }
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  img {
+    width: 100%;
+    height: 100%;
+    // object-fit: cover;
+  }
+}
+//슬라이드 팝업창
+.slide-pop {
+  background-color: $main_color;
+  white-space: nowrap;
+  &:hover {
+    color: $sub_color;
+    cursor: pointer;
+  }
+
+  .marquee-container {
+    display: flex;
+    // margin: 0.2rem;
+    align-items: center;
+    transition: 0.3s;
+    font-size: 1.6vw;
+    overflow: hidden;
+    height: 100%;
+    // width: 200%;
+    .marquee {
+      animation: marquee 10s linear infinite;
+      padding: 0 3rem; // 글자 사이 간격 조정
+    }
+  }
+}
+.slide-pop:hover .marquee-container .marquee {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+//슬라이드 메뉴
+.slider {
+  background-color: $main_color;
+  overflow: hidden;
+  height: 20vw;
+  margin: auto; //가운데 정렬
+
+  .list {
+    display: flex;
+    width: calc(20vw * 15);
+    animation: scroll 40s linear infinite;
+  }
+  .item {
+    cursor: pointer;
+    height: 20vw;
+    width: 20vw;
+    perspective: 100px;
+    img {
+      width: 100%;
+      transition: transform 1s;
+    }
+  }
+}
+.slider:hover .list {
+  animation-play-state: paused; // 마우스 올렸을 때 일시정지
+}
+.slider:hover .item {
+  filter: grayscale(1);
+}
+.slider .item:hover {
+  filter: grayscale(0);
+}
+@keyframes scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  } // 확인하기.
+  100% {
+    transform: translateX(calc(-20vw * 10));
+  }
+}
+
+// 푸터
+.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(255, 210, 217);
+}
+.footer_top {
+  justify-content: space-between;
+  background-color: $sub_color;
+  display: flex;
+  padding: 1vw;
+  p {
+    color: $main_color;
+    font-weight: bolder;
+  }
+  img {
+    height: 2.15vw;
+  }
+}
+.footer_bottom {
+  padding: 2vw 2vw;
+  display: none;
+  background-color: $sub_color;
+  border-top: 1px solid $main_color;
+  span {
+    color: $main_color;
+  }
+  span::after {
+    content: "";
+    border-left: 0.15vw solid $main_color;
+    height: 1.1vw;
+    display: inline-block;
+    margin-left: 5px;
+    margin: 0 5px;
+  }
+  .footer_info {
+    font-size: 1.3vw;
+  }
+}
+
+// 카테고리 아이콘
+.category-wrapper {
+  .category-container {
+    display: flex;
+    justify-content: space-around;
+    .category-img {
+      position: relative;
+      .overlay-wrap {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        cursor: pointer;
+        &:hover .overlay {
+          margin-top: 50%;
+        }
+        .overlay {
+          width: 100%;
+          height: 100%;
+          margin-top: 100%;
+          transition: all 1s;
+          display: flex;
+          justify-content: center;
+          span {
+            font-size: 2vw;
+            font-weight: bold;
+            color: $sub_color;
+            text-shadow: -1px -1px 0 $main_color, 1px -1px 0 $main_color,
+              -1px 1px 0 $main_color, 1px 1px 0 $main_color;
+          }
+        }
+      }
+    }
+  }
+}
+
+.slide-box {
+  width: 100vw;
+  display: flex;
+  flex-shrink: 0;
+  .slide-box img {
+    width: 100%;
+  }
+}
+
+.slide-wrapper {
+  display: flex;
+  width: 400vw;
+  transition: transform 1s;
+}
+.slide-container {
+  overflow: hidden;
+}
+
+// aside
+#aside {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 488px;
+  height: 100vh;
+  background: $main_color;
+  z-index: 999;
+  overflow-y: hidden;
+  display: none;
+  padding: 78px 54px;
+  font-size: 18px;
+  li {
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: $sub_color;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &:hover {
+      font-weight: bold;
+      color: rgb(0, 0, 0);
+    }
+  }
+
+  .aside-top {
+    margin: auto; //가운데 정렬
+    width: 100%;
+    margin-bottom: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .aside-search {
+      legend {
+        display: none;
+      }
+
+      fieldset {
+        border: none;
+      }
+
+      .input-container {
+        position: relative;
+        width: 100%;
+        .search-icon {
+          position: absolute;
+          right: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 20px;
+          height: 20px;
+        }
+      }
+
+      input {
+        padding: 10px;
+        background-color: $main_color;
+        width: 260px;
+        height: 38px;
+        border: 5px solid $sub_color;
+        border-style: dashed;
+        border-radius: 50px;
+        letter-spacing: 2px;
+        color: $sub_color;
+        font-weight: bold;
+        outline: none;
+        box-shadow: none;
+      }
+    }
+    .aside-cart {
+      display: flex;
+      align-items: center;
+      margin-left: 21px;
+    }
+    .aside-close {
+      margin-left: 21px;
+      img {
+        width: 39px;
+        height: 39px;
+      }
+    }
+  }
+
+  .dote-line {
+    width: 100%;
+    height: 5px;
+    display: inline-block;
+    margin: 27.5px 0;
+    border-bottom: 5px dashed $sub_color;
+  }
+}
